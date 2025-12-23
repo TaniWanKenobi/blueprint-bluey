@@ -443,7 +443,7 @@ async function resolveTicket(
 app.event("message", async ({ event, client, logger }) => {
     if (event.subtype) return; // Skip edited messages, etc.
     // Only process new messages in the help channel (not thread replies)
-    if (event.channel !== HELP_CHANNEL || event.thread_ts) {
+    if (event.channel !== HELP_CHANNEL || (event as any).thread_ts) {
         return;
     };
 
